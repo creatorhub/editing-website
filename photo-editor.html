@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Editor - SmartEdit</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+background:#020617;
+padding:15px;
+}
+
+h1{
+margin:0;
+}
+
+.editor{
+margin-top:20px;
+}
+
+canvas{
+border:2px solid white;
+max-width:90%;
+margin-top:20px;
+}
+
+.controls{
+margin-top:20px;
+}
+
+button{
+padding:10px 20px;
+margin:5px;
+border:none;
+border-radius:6px;
+background:#38bdf8;
+cursor:pointer;
+}
+
+input{
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Photo Editor</h1>
+</header>
+
+<div class="editor">
+
+<input type="file" id="upload">
+
+<br>
+
+<canvas id="canvas"></canvas>
+
+<div class="controls">
+
+<button onclick="addText()">Add Text</button>
+
+<button onclick="blackWhite()">B&W Filter</button>
+
+<button onclick="downloadImage()">Download</button>
+
+</div>
+
+</div>
+
+<script>
+
+let canvas = document.getElementById("canvas");
+let ctx = canvas.getContext("2d");
+
+let upload = document.getElementById("upload");
+
+let image = new Image();
+
+upload.addEventListener("change", function(e){
+
+let file = e.target.files[0];
+image.src = URL.createObjectURL(file);
+
+image.onload = function(){
+
+canvas.width = image.width;
+canvas.height = image.height;
+
+ctx.drawImage(image,0,0);
+
+}
+
+});
+
+function addText(){
+
+ctx.fillStyle="red";
+ctx.font="40px Arial";
+ctx.fillText("SmartEdit",50,50);
+
+}
+
+function blackWhite(){
+
+let imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+let data = imgData.data;
+
+for(let i=0;i<data.length;i+=4){
+
+let avg = (data[i]+data[i+1]+data[i+2])/3;
+
+data[i]=avg;
+data[i+1]=avg;
+data[i+2]=avg;
+
+}
+
+ctx.putImageData(imgData,0,0);
+
+}
+
+function downloadImage(){
+
+let link = document.createElement("a");
+
+link.download="edited-image.png";
+
+link.href=canvas.toDataURL();
+
+link.click();
+
+}
+
+</script>
+
+</body>
+</html>
