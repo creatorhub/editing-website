@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SmartEdit - AI Photo & Video Editor</title>
+
+<title>SmartEdit</title>
 
 <style>
 
@@ -15,7 +18,7 @@ font-family:Arial, sans-serif;
 }
 
 body{
-background:linear-gradient(180deg,#020617,#0f172a);
+background:#0f172a;
 color:white;
 }
 
@@ -27,8 +30,6 @@ justify-content:space-between;
 align-items:center;
 padding:15px 20px;
 background:#020617;
-position:sticky;
-top:0;
 }
 
 .logo{
@@ -47,101 +48,99 @@ font-size:14px;
 /* HERO */
 
 .hero{
+padding:60px 20px;
 text-align:center;
-padding:70px 20px;
 }
 
 .hero h1{
-font-size:38px;
-margin-bottom:15px;
+font-size:34px;
+margin-bottom:10px;
 }
 
 .hero p{
 color:#94a3b8;
-font-size:16px;
 }
 
 .start-btn{
-margin-top:25px;
-padding:14px 35px;
+margin-top:20px;
+padding:14px 30px;
 border:none;
 border-radius:30px;
-font-size:18px;
+background:#38bdf8;
+color:black;
+font-size:16px;
 font-weight:bold;
-background:linear-gradient(90deg,#38bdf8,#22c55e);
 cursor:pointer;
 }
 
-/* TOOLS */
+/* QUICK ACTIONS */
+
+.quick-tools{
+padding:25px 15px;
+}
+
+.quick-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
+}
+
+.quick-card{
+background:#020617;
+padding:18px;
+border-radius:10px;
+text-align:center;
+border:1px solid #1e293b;
+}
+
+.quick-card a{
+text-decoration:none;
+color:white;
+font-size:13px;
+}
+
+/* MAIN TOOLS */
 
 .tools{
-padding:40px 20px;
-}
-
-.tools h2{
-text-align:center;
-margin-bottom:30px;
-}
-
-.tool-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:15px;
+padding:20px 15px;
 }
 
 .tool-card{
 background:#020617;
 border-radius:12px;
-padding:25px 15px;
-text-align:center;
-transition:0.3s;
+padding:20px;
+margin-bottom:12px;
 border:1px solid #1e293b;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.tool-card:hover{
-transform:translateY(-5px);
-background:#1e293b;
+.tool-card h3{
+font-size:16px;
 }
 
-.tool-icon{
-font-size:35px;
-margin-bottom:10px;
-}
-
-.tool-card a{
-display:inline-block;
-margin-top:10px;
+.open-btn{
 padding:6px 14px;
-border-radius:6px;
 background:#38bdf8;
-color:black;
+border-radius:6px;
 text-decoration:none;
-font-size:14px;
-}
-
-/* FEATURE SECTION */
-
-.features{
-padding:40px 20px;
-text-align:center;
-}
-
-.feature-box{
-margin-top:20px;
-color:#94a3b8;
+color:black;
+font-size:13px;
 }
 
 /* FOOTER */
 
 footer{
 text-align:center;
-padding:20px;
-background:#020617;
-margin-top:40px;
-font-size:14px;
+padding:15px;
+margin-top:30px;
+font-size:13px;
+color:#94a3b8;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -151,53 +150,44 @@ font-size:14px;
 <div class="logo">SmartEdit</div>
 
 <nav>
+
 <a href="#">Home</a>
 <a href="photo-editor.html">Photo</a>
 <a href="video-editor.html">Video</a>
+
 </nav>
 
 </header>
-
 
 <section class="hero">
 
 <h1>Create Amazing Edits</h1>
 
-<p>Powerful AI Photo & Video Editor like CapCut</p>
+<p>Edit photos and videos directly in your browser.</p>
 
 <button class="start-btn" onclick="openEditor()">Start Editing</button>
 
 </section>
 
 
-<section class="tools">
+<section class="quick-tools">
 
-<h2>Editing Tools</h2>
+<div class="quick-grid">
 
-<div class="tool-grid">
-
-<div class="tool-card">
-<div class="tool-icon">🖼</div>
-<h3>Photo Editor</h3>
-<a href="photo-editor.html">Open</a>
+<div class="quick-card">
+<a href="photo-editor.html">Photo</a>
 </div>
 
-<div class="tool-card">
-<div class="tool-icon">🎬</div>
-<h3>Video Editor</h3>
-<a href="video-editor.html">Open</a>
+<div class="quick-card">
+<a href="video-editor.html">Video</a>
 </div>
 
-<div class="tool-card">
-<div class="tool-icon">✂️</div>
-<h3>BG Remover</h3>
-<a href="bg-remove.html">Open</a>
+<div class="quick-card">
+<a href="bg-remove.html">Remove BG</a>
 </div>
 
-<div class="tool-card">
-<div class="tool-icon">🤖</div>
-<h3>AI Reel Maker</h3>
-<a href="ai-reel.html">Open</a>
+<div class="quick-card">
+<a href="ai-reel.html">AI Reel</a>
 </div>
 
 </div>
@@ -205,15 +195,38 @@ font-size:14px;
 </section>
 
 
-<section class="features">
+<section class="tools">
 
-<h2>Why SmartEdit?</h2>
+<div class="tool-card">
 
-<div class="feature-box">
-<p>⚡ Fast Editing</p>
-<p>🎨 Professional Effects</p>
-<p>🤖 AI Powered Tools</p>
-<p>📱 Mobile Friendly Editor</p>
+<h3>Photo Editor</h3>
+
+<a class="open-btn" href="photo-editor.html">Open</a>
+
+</div>
+
+<div class="tool-card">
+
+<h3>Video Editor</h3>
+
+<a class="open-btn" href="video-editor.html">Open</a>
+
+</div>
+
+<div class="tool-card">
+
+<h3>Background Remover</h3>
+
+<a class="open-btn" href="bg-remove.html">Open</a>
+
+</div>
+
+<div class="tool-card">
+
+<h3>AI Reel Maker</h3>
+
+<a class="open-btn" href="ai-reel.html">Open</a>
+
 </div>
 
 </section>
@@ -221,7 +234,7 @@ font-size:14px;
 
 <footer>
 
-<p>© 2026 SmartEdit - All Rights Reserved</p>
+<p>© SmartEdit</p>
 
 </footer>
 
@@ -229,10 +242,13 @@ font-size:14px;
 <script>
 
 function openEditor(){
+
 window.location.href="photo-editor.html"
+
 }
 
 </script>
 
 </body>
+
 </html>
