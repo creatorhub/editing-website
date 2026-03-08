@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartEdit - Photo & Video Editor</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#0f172a;
+color:white;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+background:#020617;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#38bdf8;
+}
+
+nav a{
+margin:0 15px;
+text-decoration:none;
+color:white;
+}
+
+.hero{
+text-align:center;
+padding:80px 20px;
+}
+
+.hero h1{
+font-size:45px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:18px;
+color:#cbd5f5;
+}
+
+.start-btn{
+margin-top:30px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:8px;
+background:#38bdf8;
+color:black;
+cursor:pointer;
+}
+
+.tools{
+padding:60px 20px;
+text-align:center;
+}
+
+.tool-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+.tool-card{
+background:#020617;
+padding:30px;
+border-radius:10px;
+transition:0.3s;
+}
+
+.tool-card:hover{
+transform:scale(1.05);
+background:#1e293b;
+}
+
+.tool-card h3{
+margin-bottom:10px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+background:#020617;
+margin-top:50px;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<header>
+
+<div class="logo">SmartEdit</div>
+
+<nav>
+<a href="#">Home</a>
+<a href="photo-editor.html">Photo Editor</a>
+<a href="video-editor.html">Video Editor</a>
+<a href="ai-tools.html">AI Tools</a>
+</nav>
+
+</header>
+
+
+<section class="hero">
+
+<h1>All-in-One Photo & Video Editor</h1>
+
+<p>Edit Photos, Create Videos, Remove Background, and Generate Reels with AI.</p>
+
+<button class="start-btn" onclick="openEditor()">Start Editing</button>
+
+</section>
+
+
+<section class="tools">
+
+<h2>Editing Tools</h2>
+
+<div class="tool-grid">
+
+<div class="tool-card">
+<h3>Photo Editor</h3>
+<p>Crop, filters, text, stickers.</p>
+<a href="photo-editor.html">Open</a>
+</div>
+
+<div class="tool-card">
+<h3>Video Editor</h3>
+<p>Trim, music, transitions.</p>
+<a href="video-editor.html">Open</a>
+</div>
+
+<div class="tool-card">
+<h3>Background Remover</h3>
+<p>Remove photo background instantly.</p>
+<a href="bg-remove.html">Open</a>
+</div>
+
+<div class="tool-card">
+<h3>AI Reel Maker</h3>
+<p>Create reels automatically.</p>
+<a href="ai-reel.html">Open</a>
+</div>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 SmartEdit - Online Editing Platform</p>
+
+</footer>
+
+
+<script>
+
+function openEditor(){
+window.location.href = "photo-editor.html";
+}
+
+</script>
+
+</body>
+</html>
