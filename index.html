@@ -14,7 +14,7 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial;
 }
 
 body{
@@ -38,13 +38,6 @@ font-weight:bold;
 color:#38bdf8;
 }
 
-nav a{
-margin-left:15px;
-text-decoration:none;
-color:white;
-font-size:14px;
-}
-
 /* HERO */
 
 .hero{
@@ -62,71 +55,52 @@ color:#94a3b8;
 }
 
 .start-btn{
-margin-top:20px;
-padding:14px 30px;
+margin-top:25px;
+padding:15px 35px;
 border:none;
 border-radius:30px;
+font-size:17px;
+font-weight:bold;
 background:#38bdf8;
 color:black;
-font-size:16px;
-font-weight:bold;
 cursor:pointer;
 }
 
-/* QUICK ACTIONS */
+/* HISTORY */
 
-.quick-tools{
+.history{
 padding:25px 15px;
 }
 
-.quick-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:10px;
+.history h2{
+margin-bottom:15px;
+font-size:18px;
 }
 
-.quick-card{
+.history-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
+}
+
+.project-card{
 background:#020617;
-padding:18px;
 border-radius:10px;
+padding:20px;
 text-align:center;
 border:1px solid #1e293b;
 }
 
-.quick-card a{
-text-decoration:none;
-color:white;
-font-size:13px;
-}
-
-/* MAIN TOOLS */
-
-.tools{
-padding:20px 15px;
-}
-
-.tool-card{
-background:#020617;
-border-radius:12px;
-padding:20px;
-margin-bottom:12px;
-border:1px solid #1e293b;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-
-.tool-card h3{
-font-size:16px;
-}
-
-.open-btn{
-padding:6px 14px;
-background:#38bdf8;
+.project-thumb{
+height:70px;
+background:#1e293b;
 border-radius:6px;
-text-decoration:none;
-color:black;
+margin-bottom:10px;
+}
+
+.project-name{
 font-size:13px;
+color:#cbd5f5;
 }
 
 /* FOOTER */
@@ -134,9 +108,8 @@ font-size:13px;
 footer{
 text-align:center;
 padding:15px;
-margin-top:30px;
-font-size:13px;
 color:#94a3b8;
+font-size:13px;
 }
 
 </style>
@@ -149,83 +122,47 @@ color:#94a3b8;
 
 <div class="logo">SmartEdit</div>
 
-<nav>
-
-<a href="#">Home</a>
-<a href="photo-editor.html">Photo</a>
-<a href="video-editor.html">Video</a>
-
-</nav>
-
 </header>
+
 
 <section class="hero">
 
 <h1>Create Amazing Edits</h1>
 
-<p>Edit photos and videos directly in your browser.</p>
+<p>Edit photos and videos instantly.</p>
 
-<button class="start-btn" onclick="openEditor()">Start Editing</button>
-
-</section>
-
-
-<section class="quick-tools">
-
-<div class="quick-grid">
-
-<div class="quick-card">
-<a href="photo-editor.html">Photo</a>
-</div>
-
-<div class="quick-card">
-<a href="video-editor.html">Video</a>
-</div>
-
-<div class="quick-card">
-<a href="bg-remove.html">Remove BG</a>
-</div>
-
-<div class="quick-card">
-<a href="ai-reel.html">AI Reel</a>
-</div>
-
-</div>
+<button class="start-btn" onclick="openEditor()">
+Start Editing
+</button>
 
 </section>
 
 
-<section class="tools">
+<section class="history">
 
-<div class="tool-card">
+<h2>Recent Projects</h2>
 
-<h3>Photo Editor</h3>
+<div class="history-grid">
 
-<a class="open-btn" href="photo-editor.html">Open</a>
-
+<div class="project-card">
+<div class="project-thumb"></div>
+<div class="project-name">Project 1</div>
 </div>
 
-<div class="tool-card">
-
-<h3>Video Editor</h3>
-
-<a class="open-btn" href="video-editor.html">Open</a>
-
+<div class="project-card">
+<div class="project-thumb"></div>
+<div class="project-name">Project 2</div>
 </div>
 
-<div class="tool-card">
-
-<h3>Background Remover</h3>
-
-<a class="open-btn" href="bg-remove.html">Open</a>
-
+<div class="project-card">
+<div class="project-thumb"></div>
+<div class="project-name">Project 3</div>
 </div>
 
-<div class="tool-card">
-
-<h3>AI Reel Maker</h3>
-
-<a class="open-btn" href="ai-reel.html">Open</a>
+<div class="project-card">
+<div class="project-thumb"></div>
+<div class="project-name">Project 4</div>
+</div>
 
 </div>
 
@@ -243,7 +180,7 @@ color:#94a3b8;
 
 function openEditor(){
 
-window.location.href="photo-editor.html"
+window.location.href="editor.html"
 
 }
 
