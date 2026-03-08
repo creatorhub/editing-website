@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>SmartEdit Editor</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial;
+}
+
+body{
+background:#0f172a;
+color:white;
+display:flex;
+flex-direction:column;
+height:100vh;
+}
+
+/* TOP BAR */
+
+.topbar{
+background:#020617;
+padding:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#38bdf8;
+font-weight:bold;
+}
+
+.export{
+background:#38bdf8;
+border:none;
+padding:6px 12px;
+border-radius:6px;
+}
+
+/* PREVIEW */
+
+.preview{
+flex:1;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:10px;
+}
+
+canvas, video{
+max-width:100%;
+max-height:65vh;
+border-radius:10px;
+}
+
+/* TIMELINE */
+
+.timeline{
+background:#020617;
+padding:8px;
+overflow-x:auto;
+display:flex;
+gap:10px;
+}
+
+.clip{
+background:#1e293b;
+padding:8px 12px;
+border-radius:6px;
+font-size:12px;
+}
+
+/* BOTTOM TOOLS */
+
+.tools{
+background:#020617;
+display:flex;
+overflow-x:auto;
+gap:10px;
+padding:10px;
+}
+
+.tool{
+background:#1e293b;
+padding:8px 12px;
+border-radius:8px;
+font-size:13px;
+white-space:nowrap;
+cursor:pointer;
+}
+
+/* ADJUST PANEL */
+
+.adjust{
+padding:10px;
+background:#020617;
+}
+
+input[type=range]{
+width:100%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+<div class="logo">SmartEdit</div>
+
+<div>
+
+<input type="file" id="upload" accept="image/*,video/*">
+<input type="file" id="music" accept="audio/*">
+
+<button class="export" onclick="download()">Export</button>
+
+</div>
+
+</div>
+
+
+<div class="preview">
+
+<canvas id="canvas"></canvas>
+<video id="video" controls style="display:none"></video>
+
+</div>
+
+
+<div class="timeline">
+
+<div class="clip">Clip 1</div>
+<div class="clip">Clip 2</div>
+<div class="clip">Music</div>
+
+</div>
+
+
+<div class="tools">
+
+<div class="tool" onclick="addText()">Text</div>
+<div class="tool" onclick="grayscale()">B&W</div>
+<div class="tool" onclick="sepia()">Sepia</div>
+<div class="tool" onclick="invert()">Invert</div>
+<div class="tool" onclick="removeBG()">AI BG</div>
+
+</div>
+
+
+<div class="adjust">
+
+<label>Brightness</label>
+<input type="range" id="brightness" min="0" max="200" value="100">
+
+<label>Contrast</label>
+<input type="range" id="contrast" min="0" max="200" value="100">
+
+</div>
+
+
+<script>
+
+let canvas=document.getElementById("canvas");
+let ctx=canvas.getContext("2d");
+
+let video=document.getElementById("video");
+
+let upload=document.getElementById("upload");
+
+let img=new Image();
+
+upload.addEventListener("change",function(e){
+
+let file=e.target.files[0];
+
+if(file.type.startsWith("image")){
+
+video.style.display="none";
+canvas.style.display="block";
+
+img.src=URL.createObjectURL(file);
+
+img.onload=function(){
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+ctx.drawImage(img,0,0);
+
+}
+
+}
+
+else{
+
+canvas.style.display="none";
+video.style.display="block";
+
+video.src=URL.createObjectURL(file);
+
+}
+
+});
+
+
+function addText(){
+
+ctx.fillStyle="white";
+ctx.font="40px Arial";
+ctx.fillText("SmartEdit",50,50);
+
+}
+
+
+function grayscale(){
+
+let imgData=ctx.getImageData(0,0,canvas.width,canvas.height);
+let d=imgData.data;
+
+for(let i=0;i<d.length;i+=4){
+
+let avg=(d[i]+d[i+1]+d[i+2])/3;
+
+d[i]=avg;
+d[i+1]=avg;
+d[i+2]=avg;
+
+}
+
+ctx.putImageData(imgData,0,0);
+
+}
+
+
+function sepia(){
+
+ctx.filter="sepia(100%)";
+ctx.drawImage(img,0,0);
+
+}
+
+
+function invert(){
+
+ctx.filter="invert(100%)";
+ctx.drawImage(img,0,0);
+
+}
+
+
+function removeBG(){
+
+alert("AI background remover will use AI API later.");
+
+}
+
+
+function download(){
+
+let link=document.createElement("a");
+
+link.download="smartedit.png";
+
+link.href=canvas.toDataURL();
+
+link.click();
+
+}
+
+</script>
+
+</body>
+</html>
