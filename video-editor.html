@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Editor - SmartEdit</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+}
+
+header{
+background:#020617;
+padding:15px;
+}
+
+.editor{
+margin-top:20px;
+}
+
+video{
+max-width:90%;
+margin-top:20px;
+border:2px solid white;
+}
+
+.controls{
+margin-top:20px;
+}
+
+button{
+padding:10px 20px;
+margin:5px;
+border:none;
+border-radius:6px;
+background:#38bdf8;
+cursor:pointer;
+}
+
+input{
+padding:5px;
+margin:5px;
+width:80px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Video Editor</h1>
+</header>
+
+<div class="editor">
+
+<input type="file" id="upload" accept="video/*">
+
+<br>
+
+<video id="video" controls></video>
+
+<div class="controls">
+
+<br>
+
+<label>Start:</label>
+<input type="number" id="startTime" value="0">
+
+<label>End:</label>
+<input type="number" id="endTime" value="5">
+
+<br>
+
+<button onclick="playVideo()">Play</button>
+<button onclick="pauseVideo()">Pause</button>
+<button onclick="trimVideo()">Trim Preview</button>
+<button onclick="downloadVideo()">Download</button>
+
+</div>
+
+</div>
+
+<script>
+
+let video = document.getElementById("video");
+let upload = document.getElementById("upload");
+
+upload.addEventListener("change", function(e){
+
+let file = e.target.files[0];
+video.src = URL.createObjectURL(file);
+
+});
+
+function playVideo(){
+video.play();
+}
+
+function pauseVideo(){
+video.pause();
+}
+
+function trimVideo(){
+
+let start = document.getElementById("startTime").value;
+video.currentTime = start;
+
+}
+
+function downloadVideo(){
+
+alert("Download feature will use advanced processing (FFmpeg) in next version.");
+
+}
+
+</script>
+
+</body>
+</html>
